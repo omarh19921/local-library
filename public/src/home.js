@@ -40,9 +40,17 @@ function getMostCommonGenres(books=[]) {
   
 }
 
-function getMostPopularBooks(books) {
-  
-
+function getMostPopularBooks(books=[]) {
+  const result = [];
+  books.forEach((element)=>{
+    const {title, borrows} = element
+    const obj = {name:title, count: borrows.length};
+    result.push(obj);
+  })
+    result.sort((a,b)=>{
+      return b.count - a.count;
+    })
+    return result.slice(0,5);
 };
 
 
